@@ -11,7 +11,7 @@
  add_action( 'the_content', 'rage' );
 
 function rage ( $content ) {
-    return $content .= '<p>You have angered Cthulu</p>';
+    return $content .= '<p>You have angered Cthulu</p>'; //Displays intense rage
 }
 
 
