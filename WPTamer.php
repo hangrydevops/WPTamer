@@ -13,3 +13,6 @@
 function rage ( $content ) {
     return $content .= '<p>You have angered Cthulu</p>';
 }
+
+
+?>
