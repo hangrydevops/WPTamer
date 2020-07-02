@@ -1,0 +1,2 @@
+# WPTamer
+Plugin of mysteries
