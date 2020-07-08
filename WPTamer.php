@@ -35,6 +35,18 @@ defined('ABSPATH') or die('Hey, you cant access this file, goober.'); //If WordP
   
 class WPTamer 
 {
+  //public for functions
+  //can be accessed anywhere
+
+  //protected
+  //can be accessed only within the class itself or a class that extends the main class itself
+
+  //private
+  //can be accessed only by the class itself
+
+  //static
+  //
+  
   function __construct() {
     add_action( 'init', array( $this, 'custom_post_type') );
   }
@@ -51,9 +63,15 @@ class WPTamer
     flush_rewrite_rules();
   }
 
-  function uninstall(){       //uninstall
-    // delete CPT
-    // delete all of the plugin data from the DB
+  function enqueue (){
+    // enqueue all our scripts
+    wp_enqueue_style( 'mypluginstyle', plugins_url( '/assets/mystyle.css', __FILE__ ));
+    wp_enqueue_script( 'mypluginscript', plugins_url( '/assets/myscript.js', __FILE__ ));
+  }
+
+  function register (){
+    add_action( 'admin_enqueue_scripts', array( $this, 'enqueue'));
+    
   }
 
   function custom_post_type( ){
@@ -64,6 +82,7 @@ class WPTamer
 
 if ( class_exists( 'WPTamer')){
     $WPTamer = new WPTamer();
+    $WPTamer->register();
 }
 
 // activation
